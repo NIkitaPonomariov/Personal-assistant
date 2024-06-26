@@ -1,0 +1,89 @@
++---------------------+
+|      Field          |
+|---------------------|
+| - value: str        |
+|---------------------|
+| + __init__(value)   |
+| + __str__()         |
++---------------------+
+          ^
+          |
+          |
++---------+----------+
+|                    |
+| +-----------------+|
+| |      Name       ||
+| +-----------------+|
+| |                 ||
++-------------------+|
+|                   |
+| +-----------------+|
+| |     Phone       ||
+| +-----------------+|
+| | + __init__(value)|
++-------------------+|
+|                   |
+| +-----------------+|
+| |   Birthday      ||
+| +-----------------+|
+| | + __init__(value)|
+| | + __str__()      |
++-------------------+|
+|
+|
++---------------------------------------------+
+|                   Record                    |
+|---------------------------------------------|
+| - name: Name                                |
+| - phones: list[Phone]                       |
+| - birthday: Birthday                        |
+|---------------------------------------------|
+| + __init__(name: str)                       |
+| + add_phone(phone: str)                     |
+| + remove_phone(phone: str)                  |
+| + edit_phone(old_phone: str, new_phone: str)|
+| + find_phone(phone: str) -> Phone           |
+| + add_birthday(birthday: str)               |
+| + __str__() -> str                          |
++---------------------------------------------+
+
++------------------------+
+|     UserView (ABC)     |
+|------------------------|
+| + show(message: str)   |
++------------------------+
+          ^
+          |
+          |
++---------+-----------+
+|                     |
+|     ConsoleView     |
+|---------------------|
+| + show(message: str)|
++---------------------+
+
++---------------------------------------------+
+|                 AddressBook                 |
+|---------------------------------------------|
+| - data: dict                                |
+|---------------------------------------------|
+| + add_record(record: Record)                |
+| + find(name: str) -> Record                 |
+| + delete(name: str)                         |
+| + get_upcoming_birthdays(days: int) -> list |
++---------------------------------------------+
+
++--------------------------------------------------------+
+|                          Functions                     |
+|--------------------------------------------------------|
+| + input_error(func)                                    |
+| + parse_input(user_input: str) -> list                 |
+| + add_contact(args: list, book: AddressBook, view: UserView)|
+| + change_contact(args: list, book: AddressBook, view: UserView)|
+| + show_phone(args: list, book: AddressBook, view: UserView)|
+| + add_birthday(args: list, book: AddressBook, view: UserView)|
+| + show_birthday(args: list, book: AddressBook, view: UserView)|
+| + birthdays(args: list, book: AddressBook, view: UserView)|
+| + save_data(book: AddressBook, filename: str)          |
+| + load_data(filename: str) -> AddressBook              |
++--------------------------------------------------------+
